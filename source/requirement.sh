@@ -1,0 +1,9 @@
+pip3 install Django==1.11.23
+pip3 install django-cors-headers==3.2.0
+pip3 install djangorestframework==3.10.3
+pip3 install pytz==2019.3
+pip3 install certifi==2019.11.28
+pip3 install chardet==3.0.4
+pip3 install idna==2.8
+pip3 install requests==2.22.0
+pip3 install urllib3==1.25.7

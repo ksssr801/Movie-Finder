@@ -1,0 +1,62 @@
+<html>
+<head>
+<style>
+table {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<center><h2><u>Movie Finder</u></h2></center>
+
+<br>
+<form action="/myapi/movies-list">
+    <label for="title">Filter By Movie Name: </label>&nbsp;&nbsp;
+    <input id="title" type="text" name="title" value="{{ title }}">&nbsp;&nbsp;
+    <input type="submit" value="Filter">
+</form>
+
+<br>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Director</th>
+    <th>Production</th>
+    <th>Release Date</th>
+    <th>Language</th>
+    <th>Runtime</th>
+    <th>Box Office Collection</th>
+    <th>IMDB Rating</th>
+</tr>
+{% for key, value_list in final_dict.items %}
+    {% for val in value_list %}
+    <tr>
+        <td><a href="{% url 'movie_detail' imdb_id=val.imdb_id %}">{{val.title}}</a></td>
+        <td>{{val.director}}</td>
+        <td>{{val.production}}</td>
+        <td>{{val.released}}</td>
+        <td>{{val.language}}</td>
+        <td>{{val.runtime}}</td>
+        <td>{{val.box_office}}</td>
+        <td>{{val.rating}}&nbsp;({{val.votes}})</td>
+    </tr>
+    {% endfor %}
+{% endfor %}
+</table>
+<br>
+
+</body>
+</html>
